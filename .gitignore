@@ -1,0 +1,4 @@
+.build/
+.swiftpm/
+*.app
+Sources/Leezi/Secrets.swift
