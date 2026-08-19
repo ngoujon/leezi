@@ -8,8 +8,10 @@ swift build -c release
 APP="Leezi.app"
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS"
+mkdir -p "$APP/Contents/Resources"
 
 cp .build/release/Leezi "$APP/Contents/MacOS/Leezi"
+cp Resources/Leezi.icns "$APP/Contents/Resources/Leezi.icns"
 
 cat > "$APP/Contents/Info.plist" <<'PLIST'
 <?xml version="1.0" encoding="UTF-8"?>
@@ -28,6 +30,8 @@ cat > "$APP/Contents/Info.plist" <<'PLIST'
     <string>1.0</string>
     <key>CFBundleExecutable</key>
     <string>Leezi</string>
+    <key>CFBundleIconFile</key>
+    <string>Leezi.icns</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>LSMinimumSystemVersion</key>
