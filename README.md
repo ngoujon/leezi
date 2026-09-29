@@ -1,24 +1,29 @@
 # Leezi
 
-Lecteur de texte pour macOS : glisse-dépose ou colle un texte, écoute-le en voix homme/femme,
-avec play/pause, avance/recul de 10 secondes, réglage de la vitesse, et nettoyage du texte
-via Ollama Cloud.
+A text-to-speech reader for macOS (SwiftUI). Drop a file or paste some text, then listen to it with a male or female voice — play / pause, skip back or forward 10 seconds, adjust the reading speed — and optionally clean the text up with an LLM through Ollama Cloud (removes page numbers, broken line breaks, artefacts from PDFs…).
 
-## Configuration de la clé API Ollama Cloud
+> The UI is in French and the voice filter targets the French system voices.
 
-1. Copie `Config/Secrets.swift.example` vers `Sources/Leezi/Secrets.swift`.
-2. Remplace `COLLE_TA_CLE_ICI` par ta clé API Ollama Cloud (https://ollama.com/settings/keys).
+## Screenshot
 
-Ce fichier `Sources/Leezi/Secrets.swift` est ignoré par git (voir `.gitignore`) pour ne jamais
-committer la clé.
+*Sample text written for the demo.*
 
-## Lancer en développement
+![Leezi window](docs/screenshots/leezi.png)
+
+## Ollama Cloud API key (optional, for "Nettoyer avec l'IA")
+
+1. Copy `Config/Secrets.swift.example` to `Sources/Leezi/Secrets.swift`.
+2. Replace `COLLE_TA_CLE_ICI` with your Ollama Cloud API key (<https://ollama.com/settings/keys>).
+
+`Sources/Leezi/Secrets.swift` is git-ignored so the key is never committed. The file must exist for the project to compile.
+
+## Run in development
 
 ```bash
 swift run
 ```
 
-## Générer l'application macOS (Leezi.app)
+## Build the macOS app
 
 ```bash
 ./build_app.sh
@@ -27,8 +32,6 @@ open Leezi.app
 
 ## Notes
 
-- La synthèse vocale utilise les voix système macOS (AVSpeechSynthesizer) ; le choix
-  homme/femme filtre les voix françaises installées. Pour plus de voix, ajoute-en dans
-  Réglages Système > Accessibilité > Contenu énoncé.
-- Le modèle Ollama Cloud utilisé par défaut est `gpt-oss:20b-cloud` (modifiable dans
-  `Sources/Leezi/OllamaClient.swift`).
+- Speech uses the macOS system voices (`AVSpeechSynthesizer`); the male / female switch filters the installed French voices. Add more voices in System Settings › Accessibility › Spoken Content.
+- The default Ollama Cloud model is `gpt-oss:20b-cloud` (see `Sources/Leezi/OllamaClient.swift`).
+- Requires macOS 14 or later.
