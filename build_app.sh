@@ -23,7 +23,7 @@ cat > "$APP/Contents/Info.plist" <<'PLIST'
     <key>CFBundleDisplayName</key>
     <string>Leezi</string>
     <key>CFBundleIdentifier</key>
-    <string>com.ngoujon.leezi</string>
+    <string>com.nicolasgoujon.leezi</string>
     <key>CFBundleVersion</key>
     <string>1.0</string>
     <key>CFBundleShortVersionString</key>
